@@ -1,41 +1,59 @@
 # Tetrosirius
 
-This template should help get you started developing with Vue 3 in Vite.
+テトリス風のグリッドゲームUI。10×20のセルからなるグリッドでセルのオン・オフを切り替えながら、行全体が埋まったところを削除します。
 
-## Recommended IDE Setup
+## 仕様
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+### グリッド構成
 
-## Recommended Browser Setup
+- **サイズ**: 10列 × 20行
+- **セルサイズ**: 3.5rem × 3.5rem（約56px）
+- **セル状態**: 白（オフ） / 黒（オン）
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+### 初期状態
 
-## Type Support for `.vue` Imports in TS
+- 上から3行目まで：白（オフ）
+- 4行目以降：黒（オン）
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+### 自動機能
 
-## Customize configuration
+- **行追加**: 上3行に黒いセルが1つ以上あれば、上に新しい白い行を自動追加
+- **行数維持**: 削除後、常に20行を保持
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+### ライン削除機能
 
-## Project Setup
+- **削除条件**: 1行のセルがすべて黒い場合、削除ボタンが活性化
+- **削除アニメーション**: 2秒かけてセルの色が白にフェードアウト
+- **処理**: 削除後、上詰めされた状態で新しい白い行が上に追加される
+
+## 操作方法
+
+### デスクトップ
+
+- **クリック**: セルをクリックすると状態がトグル（白↔黒）
+
+### タッチデバイス
+
+- **タップ**: セルをタップすると状態がトグル（白↔黒）
+- **スワイプ**: セルの上をドラッグすると、なぞったすべてのセルが状態を切り替え
+
+### ボタン操作
+
+- **ライン削除ボタン**: 削除対象行がある場合のみ活性化。クリックで該当行を削除
+
+## セットアップ
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### 開発サーバー起動
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+### ビルド
 
 ```sh
 npm run build
