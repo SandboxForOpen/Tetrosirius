@@ -25,9 +25,10 @@ defineEmits<Emits>();
 <style scoped>
 .clear-button {
   width: 100%;
-  padding: 2rem 1rem;
+  margin: auto;
+  padding: 1.5rem 1rem;
+  margin-top: 37vh;
   font-size: 1.5rem;
-  margin: auto 2rem auto auto;
   font-weight: bold;
   background-color: #4a90e2;
   color: #f0f0f0;
@@ -35,7 +36,8 @@ defineEmits<Emits>();
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s;
-  height: fit-content;
+  box-sizing: border-box;
+  height: auto;
 }
 
 .clear-button:hover:not(:disabled) {
